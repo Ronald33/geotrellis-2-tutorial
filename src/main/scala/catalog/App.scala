@@ -9,16 +9,16 @@ object App
 {
   def main(args: Array[String]): Unit =
   {
-    val catalogPath = new java.io.File("data/catalog").toURI
+    val catalogPath = new java.io.File("generated/catalog").toURI
     val attributeStore: AttributeStore = AttributeStore(catalogPath)
     val valueReader: ValueReader[LayerId] = ValueReader(attributeStore, catalogPath)
 
-    val zoom = 10
-    val x = 911
-    val y = 402
+    val zoom = 13
+    val x = 2479
+    val y = 4459
 
     val reader = valueReader.reader[SpatialKey, MultibandTile](LayerId("landsat", zoom))
     val tile = reader.read(SpatialKey(x, y))
-    tile.band(0).renderPng(ColorRamps.BlueToRed).write("from_catalog.png")
+    tile.band(0).renderPng(ColorRamps.BlueToRed).write("generated/from_catalog.png")
   }
 }
