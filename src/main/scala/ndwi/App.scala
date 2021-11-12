@@ -21,7 +21,6 @@ object App
     println("cols: " + cols)
     println("rows: " + rows)
 
-    /*
     val data: Array[Int] = new Array[Int](cols*rows)
     var index = 0
     val green_band = tile.band(1)
@@ -39,11 +38,10 @@ object App
       }
     }
     val generated_tile = IntArrayTile(data, cols, rows)
-    */
 
     // https://github.com/geotrellis/geotrellis-landsat-tutorial/blob/master/src/main/scala/tutorial/CreateNDWIPng.scala
 
-    // /*
+    /*
     val generated_tile: Tile = tile.convert(DoubleConstantNoDataCellType).combineDouble(1, 4) { (g, ir) =>
       if(isData(g) && isData(ir))
       {
@@ -52,7 +50,7 @@ object App
       }
       else { Double.NaN }
     }
-    // */
+    */
 
     val generated_raster = GeoTiff(generated_tile, geotiff.extent, geotiff.crs) // Creamos el raster
     generated_raster.write("generated/ndwi.tif")
